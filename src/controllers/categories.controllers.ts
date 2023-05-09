@@ -5,6 +5,8 @@ import {
 } from "../interfaces/categories.interfaces";
 import { createCategory } from "../services/categories/createCategory.service";
 import { listAllCategorisService } from "../services/categories/listAllCategoris.service";
+import { listAllRealEstateByCategorisService } from "../services/categories/listAllRealEstateByCategory.service";
+import { Category } from "../entities";
 
 const createCategoryController = async (
   req: Request,
@@ -25,4 +27,19 @@ const getCategoriesControllers = async (
   return res.json(listCategory);
 };
 
-export { createCategoryController, getCategoriesControllers };
+const listAllRealEstateByCategorisControllers = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  const categoryId: number = parseInt(req.params.id);
+
+  const category: Category | null = await listAllRealEstateByCategorisService(categoryId);
+
+  return res.json(category);
+};
+
+export {
+  createCategoryController,
+  getCategoriesControllers,
+  listAllRealEstateByCategorisControllers,
+};

@@ -11,10 +11,7 @@ const updateUserService = async (
   userData: TRequestUpdateUser,
   userId: number
 ): Promise<TResponseUser> => {
-  userData = {
-    ...userData,
-    ...(userData.updatedAt = new Date()),
-  };
+  
   const userRepo: Repository<User> = AppDataSource.getRepository(User);
 
   const oldUserData: User | null = await userRepo.findOneBy({

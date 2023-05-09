@@ -16,7 +16,7 @@ const verifyEmailExistsMid = async (
   });
 
   if (user) {
-    throw new AppError("User already exists.", 409);
+    throw new AppError("Email already exists", 409);
   }
 
   return next();

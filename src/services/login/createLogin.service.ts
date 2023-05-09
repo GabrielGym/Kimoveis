@@ -1,7 +1,7 @@
-import jwt from "jsonwebtoken";
-import "dotenv/config";
 import { TLoginResponse } from "../../interfaces/login.interfaces";
 import { TUser } from "../../interfaces/users.interfaces";
+import jwt from "jsonwebtoken";
+import "dotenv/config";
 
 const loginService = async (user: TUser): Promise<TLoginResponse> => {
   const token: string = jwt.sign(

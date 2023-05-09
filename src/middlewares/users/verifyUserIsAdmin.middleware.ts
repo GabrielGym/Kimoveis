@@ -15,7 +15,7 @@ const verifyUserIsAdminMid = async (
     email: res.locals.userEmail,
   });
 
-  if (user!.admin == false) {
+  if (user!.admin === false) {
     throw new AppError("Insufficient permission", 403);
   }
 

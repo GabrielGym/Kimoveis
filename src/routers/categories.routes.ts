@@ -4,6 +4,7 @@ import { verifyDataIsValidadMiddleware } from "../middlewares/verifyDataIsValida
 import {
   createCategoryController,
   getCategoriesControllers,
+  listAllRealEstateByCategorisControllers,
 } from "../controllers/categories.controllers";
 import { verifyNameExistsMid } from "../middlewares/categories/verifyNameExists.middleware";
 import { verifyTokenIsValidadMid } from "../middlewares/verifyTokenIsValidad.middleware";
@@ -22,9 +23,12 @@ caregoriesRouter.post(
 
 caregoriesRouter.get(
   "",
-  verifyTokenIsValidadMid,
-  verifyUserIsAdminMid,
   getCategoriesControllers
+);
+
+caregoriesRouter.get(
+  "/:id/realEstate",
+  listAllRealEstateByCategorisControllers
 );
 
 export default caregoriesRouter;

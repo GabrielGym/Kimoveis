@@ -16,7 +16,7 @@ const verifyIdExistsMid = async (
   });
 
   if (!user) {
-    throw new AppError("User not exists!", 404);
+    throw new AppError("User not found", 404);
   }
 
   return next();

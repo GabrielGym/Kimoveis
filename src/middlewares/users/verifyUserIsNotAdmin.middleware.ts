@@ -15,7 +15,7 @@ const verifyUserIsNotAdminMid = async (
     email: res.locals.userEmail,
   });
 
-  if (user!.admin == false && user!.id !== parseInt(req.params.id)) {
+  if (user!.admin === false && user!.id !== parseInt(req.params.id)) {
     throw new AppError("Insufficient permission", 403);
   }
 

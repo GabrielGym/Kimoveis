@@ -11,7 +11,7 @@ const verifyTokenIsValidadMid = async (
   let token: string | undefined = req.headers.authorization;
 
   if (!token) {
-    throw new AppError("Missing Bearer Token", 401);
+    throw new AppError("Missing bearer token", 401);
   }
 
   token = token.split(" ")[1];
@@ -21,7 +21,7 @@ const verifyTokenIsValidadMid = async (
     process.env.SECRET_KEY!,
     (err: any, decoded: any) => {
       if (err) {
-        throw new AppError(err.mesage, 401);
+        throw new AppError(err.message, 401);
       }
       res.locals.userEmail = decoded.email;
     }

@@ -8,4 +8,5 @@ type TCategoryRequest = z.infer<typeof requestCategorySchema>;
 
 type TCategoryResponse = z.infer<typeof responseCategorySchema>;
 
+
 export { TCategoryRequest, TCategoryResponse };
