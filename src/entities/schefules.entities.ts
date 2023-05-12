@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./users.entities";
+import { RealEstate } from "./realEstate.entities";
 
 @Entity("schedules")
 class Schedule {
@@ -12,13 +13,10 @@ class Schedule {
   @Column({type: 'time'})
   hour: string | number
 
-  @Column({ type: "integer"})
-  realEstateId: number
+  @ManyToOne(() => RealEstate)
+  realEstate: RealEstate
 
-  @Column({ type: "integer"})
-  userId: number
-
-  @ManyToOne(() => User, (user) => user.id)
+  @ManyToOne(() => User)
   user: User
 }
 

@@ -6,7 +6,6 @@ import {
 import { AppDataSource } from "../../data-source";
 import { User } from "../../entities";
 import { responseUserSchema } from "../../schemas/users.schemas";
-import { hash } from "bcryptjs";
 
 const createUserService = async (
   userData: TRequestUser
