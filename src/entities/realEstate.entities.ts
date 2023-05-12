@@ -1,6 +1,6 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Category } from "./categories.entities";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Address } from "./addresses.entities";
+import { Category } from "./categories.entities";
 
 @Entity("real_estate")
 class RealEstate {
@@ -16,17 +16,19 @@ class RealEstate {
   @Column({ type: "integer"})
   size: number
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: "date" })
   createdAt: string | Date;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: "date" })
   updatedAt: string | Date;
 
-  @OneToOne(() => Address, address => address.id)
-  addressId: Address
+  @OneToOne(() => Address)
+  @JoinColumn()
+  address: Address
 
-  @ManyToOne(() => Category)
-  categoryId: Category
+  @ManyToOne(() => Category, (category) => category.realEstate)
+  @JoinColumn()
+  category: Category
 }
 
 export { RealEstate };

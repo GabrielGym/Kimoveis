@@ -35,13 +35,13 @@ usersRoutes.patch(
   verifyDataIsValidadMiddleware(updateRequestSchema),
   verifyIdExistsMid,
   verifyTokenIsValidadMid,
-  verifyUserIsNotAdminMid,
   updateUserControllers
 );
 usersRoutes.delete(
   "/:id",
   verifyIdExistsMid,
   verifyTokenIsValidadMid,
+  verifyUserIsNotAdminMid,
   verifyUserIsAdminMid,
   deleteUsersController
 );

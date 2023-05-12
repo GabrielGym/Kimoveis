@@ -13,8 +13,6 @@ const createUserService = async (
 ): Promise<TResponseUser> => {
   const userRepo: Repository<User> = AppDataSource.getRepository(User);
 
-  userData.password = await hash(userData.password, 10);
-
   const newUser: User = userRepo.create(userData);
   await userRepo.save(newUser);
 

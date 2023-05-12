@@ -1,4 +1,6 @@
+import { hash } from "bcryptjs";
 import {
+  BeforeInsert,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
@@ -31,6 +33,11 @@ class User {
 
   @DeleteDateColumn({ nullable: true })
   deletedAt?: string | Date | null | undefined;
+
+  @BeforeInsert()
+  hashPassword = async () => {
+      this.password = await hash(this.password, 10)
+  }
 }
 
 export { User };

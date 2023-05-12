@@ -9,7 +9,7 @@ const listAllCategorisService = async (): Promise<TCategoryResponse[]> => {
     AppDataSource.getRepository(Category);
 
   const listCategory: Category[] = await categoryRepo.find();
-
+  
   const returnCategory: TCategoryResponse[] =
     responseCategoriesSchema.parse(listCategory);
 

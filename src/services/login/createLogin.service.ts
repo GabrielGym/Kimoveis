@@ -10,7 +10,7 @@ const loginService = async (user: TUser): Promise<TLoginResponse> => {
     },
     process.env.SECRET_KEY!,
     {
-      expiresIn: "24h",
+      expiresIn: "3d",
       subject: user.id.toString(),
     }
   );

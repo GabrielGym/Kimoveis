@@ -15,7 +15,10 @@ const verifyUserIsAdminMid = async (
     email: res.locals.userEmail,
   });
 
-  if (user!.admin === false) {
+  if (!user) {
+    throw new AppError("User not found", 404);
+  }
+  if (user.admin !== true) {
     throw new AppError("Insufficient permission", 403);
   }
 

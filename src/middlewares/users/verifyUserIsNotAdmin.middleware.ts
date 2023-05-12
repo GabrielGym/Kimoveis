@@ -9,14 +9,24 @@ const verifyUserIsNotAdminMid = async (
   res: Response,
   next: NextFunction
 ): Promise<void> => {
+  const id: number = parseInt(req.params.id);
   const usersRepo: Repository<User> = AppDataSource.getRepository(User);
 
-  const user: User | null = await usersRepo.findOneBy({
+  const userToken: User | null = await usersRepo.findOneBy({
     email: res.locals.userEmail,
   });
 
-  if (user!.admin === false && user!.id !== parseInt(req.params.id)) {
+  const user: User | null = await usersRepo.findOneBy({
+    id: id,
+  });
+
+  if (!user || !userToken) {
+    throw new AppError("User not found", 404);
+  }
+
+  if (userToken.admin === false || user.admin === true) {
     throw new AppError("Insufficient permission", 403);
+
   }
 
   return next();

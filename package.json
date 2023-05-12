@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "ts-node-dev --rs --cls --ignore-watch node_modules src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "test": " jest --verbose --runInBand"
+    "test": "jest --verbose --runInBand"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",

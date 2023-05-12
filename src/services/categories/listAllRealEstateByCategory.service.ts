@@ -13,13 +13,12 @@ const listAllRealEstateByCategorisService = async (
     id: categoryId,
   });
 
-  if (!veryfiIdCategory) throw new AppError("Category not found", 404)
+  if (!veryfiIdCategory) throw new AppError("Category not found", 404);
 
   const listRealEstate: Category | null = await categoryRepo
-    .createQueryBuilder('category')
-    .leftJoinAndSelect('category.realEstate', 'realEstate')
-    .leftJoinAndSelect('realEstate.categoryId', 'categoryRealEstate')
-    .where('category.id = :categoryId', { categoryId })
+    .createQueryBuilder("category")
+    .innerJoinAndSelect("category.realEstate", "realEstate")
+    .where("category.id = :categoryId", { categoryId })
     .getOne();
 
   return listRealEstate;
